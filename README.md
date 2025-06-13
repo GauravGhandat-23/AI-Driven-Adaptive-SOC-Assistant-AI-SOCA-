@@ -75,14 +75,16 @@ Open your browser to: `http://localhost:8501`
 ### 1. Summarize Logs
 
 ```text
-Jun 13 18:12:34 firewall1 kernel: [UFW BLOCK] ... SRC=45.77.50.12 DPT=3389
-Jun 13 18:13:02 ids-snort alert: ... SRC=185.173.36.50 ... [Classification: Potential Corporate Privacy Violation]
+Jun 13 18:12:34 firewall1 kernel: [UFW BLOCK] IN=eth0 OUT= MAC=00:0c:29:48:bc:35 SRC=45.77.50.12 DST=192.168.1.100 LEN=60 PROTO=TCP SPT=445 DPT=3389
+Jun 13 18:12:35 firewall1 kernel: [UFW BLOCK] IN=eth0 OUT= MAC=00:0c:29:48:bc:35 SRC=45.77.50.12 DST=192.168.1.100 LEN=60 PROTO=TCP SPT=445 DPT=3389
+Jun 13 18:13:02 ids-snort alert: [1:2010935:3] ET POLICY PE EXE or DLL Windows file download HTTP [Classification: Potential Corporate Privacy Violation] [Priority: 1] SRC=185.173.36.50 DST=192.168.1.200 SPT=80 DPT=52304
 ```
 
 ### 2. Recommend Playbook
 
 ```text
-Multiple failed SSH login attempts followed by a successful login for devops-admin.
+Multiple failed login attempts from IP 203.0.113.50 on the SSH port (22), followed by a successful login. User account: devops-admin.
+Brute-force attack suspected.
 ```
 
 ### 3. Contextualize CVE
